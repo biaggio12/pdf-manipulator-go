@@ -41,12 +41,12 @@ func main() {
 	})
 
 	// Routes
-	r.POST("/convert", convertHandler.Convert)
-	r.POST("/extract", extractHandler.ExtractPages)
-	r.POST("/merge", mergeHandler.Merge)
+	r.POST("/api/convert", convertHandler.Convert)
+	r.POST("/api/extract", extractHandler.ExtractPages)
+	r.POST("/api/merge", mergeHandler.Merge)
 
 	// Health check
-	r.GET("/health", func(c *gin.Context) {
+	r.GET("/api/health", func(c *gin.Context) {
 		c.JSON(200, gin.H{"status": "ok"})
 	})
 

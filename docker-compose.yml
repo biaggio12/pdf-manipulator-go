@@ -10,3 +10,10 @@ services:
     environment:
       - PORT=8080
     restart: unless-stopped
+    networks:
+      - manipulator-network
+networks:
+  manipulator-network:
+    name: integrator-network
+    external: true
+    

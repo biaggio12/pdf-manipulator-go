@@ -30,10 +30,13 @@ func (h *MergeHandler) Merge(c *gin.Context) {
 	}
 
 	files := form.File["files"]
-	if len(files) == 0 {
-		c.JSON(http.StatusBadRequest, models.ErrorResponse{Error: "No files uploaded"})
-		return
-	}
+    if len(files) == 0 {
+        files = form.File["files[]"]
+    }
+    if len(files) == 0 {
+        c.JSON(http.StatusBadRequest, models.ErrorResponse{Error: "No files uploaded"})
+        return
+    }
 
 	uploadedFiles := make([]*models.UploadedFile, len(files))
 	for i, file := range files {
